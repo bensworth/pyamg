@@ -12,9 +12,9 @@ import pdb, cProfile, pstats
 import time
 import math
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import cm
-from mpl_toolkits.mplot3d import Axes3D
+# import matplotlib.pyplot as plt
+# from matplotlib import cm
+# from mpl_toolkits.mplot3d import Axes3D
 
 from pyamg.gallery.diffusion import diffusion_stencil_2d
 from pyamg.gallery.stencil import stencil_grid
@@ -144,8 +144,8 @@ rand_guess 	= True
 zero_rhs 	= True
 problem_dim = 2
 N 			= 250
-epsilon 	= 0.1				# 'Strength' of aniostropy (only for 2d)
-theta 		= 4.0*math.pi/16.0	# Angle of anisotropy (only for 2d)
+epsilon 	= 0.001				# 'Strength' of aniostropy (only for 2d)
+theta 		= 0.0*math.pi/16.0	# Angle of anisotropy (only for 2d)
 
 # Empty arrays to store residuals
 sa_residuals = []
