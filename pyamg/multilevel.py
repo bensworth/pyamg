@@ -3,7 +3,7 @@
 __docformat__ = "restructuredtext en"
 
 from warnings import warn
-
+import pyamg.relaxation.smoothing as sm
 import scipy as sp
 import numpy as np
 
@@ -201,6 +201,31 @@ class multilevel_solver:
                  (100 * float(A.nnz) / float(total_nnz)))
 
         return output
+
+
+    def change_solve_matrix(self, A0):
+        """ Change matrix that we are solving/preconditioning
+        as well as corresponding relaxation routines on finest
+        grid in hierarchy. Used, for example, to precondition a
+        quadratic finite element discretization with linears.
+        """
+        ml.levels[0].A = A0
+        fn1, kwargs1 = ml.levels[0].smoothers['presmoother']
+        fn2, kwargs2 = ml.levels[0].smoothers['postsmoother']
+
+        # Rebuild presmoother
+        try:
+            setup_presmoother = eval('sm.setup_' + str(fn1))
+        except NameError:
+            raise NameError("invalid presmoother method: ", fn1)
+        ml.levels[0].presmoother = setup_presmoother(ml.levels[0], **kwargs1)
+      
+        # Rebuild postsmoother
+        try:
+            setup_postsmoother = eval('sm.setup_' + str(fn2))
+        except NameError:
+            raise NameError("invalid presmoother method: ", fn2)
+        ml.levels[0].postsmoother = setup_postsmoother(ml.levels[0], **kwargs2)
 
 
     def setup_complexity(self, verbose=False):
