@@ -1,6 +1,6 @@
 from __future__ import print_function
 from numpy import inner, mod, sqrt
-from scipy.sparse.linalg.isolve.utils import make_system
+from scipy.sparse.linalg._isolve.utils import make_system
 from pyamg.util.linalg import norm
 from warnings import warn
 

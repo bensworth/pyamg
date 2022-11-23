@@ -1,7 +1,7 @@
 from __future__ import print_function
 from numpy import array, zeros, sqrt, ravel, abs, max, conjugate, real,\
     iscomplexobj
-from scipy.sparse.linalg.isolve.utils import make_system
+from scipy.sparse.linalg._isolve.utils import make_system
 from scipy.sparse.sputils import upcast
 from scipy.linalg import get_blas_funcs, get_lapack_funcs
 from warnings import warn

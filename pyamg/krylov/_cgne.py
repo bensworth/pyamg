@@ -1,7 +1,7 @@
 from numpy import inner, ceil, asmatrix, mod
 from scipy.sparse import isspmatrix
 from scipy.sparse.sputils import upcast
-from scipy.sparse.linalg.isolve.utils import make_system
+from scipy.sparse.linalg._isolve.utils import make_system
 from scipy.sparse.linalg.interface import aslinearoperator
 from warnings import warn
 from pyamg.util.linalg import norm

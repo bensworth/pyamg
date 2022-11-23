@@ -1,7 +1,7 @@
 from warnings import warn
 from numpy import array, zeros, ravel, abs, max, dot, conjugate, sqrt,\
         iscomplexobj
-from scipy.sparse.linalg.isolve.utils import make_system
+from scipy.sparse.linalg._isolve.utils import make_system
 from scipy.sparse.sputils import upcast
 from pyamg.util.linalg import norm
 from pyamg import amg_core
